@@ -187,3 +187,758 @@ Poland:
     }
 }
 
+Germany:
+{
+    "dns": {
+        "hosts": {
+            "domain:googleapis.cn": "googleapis.com"
+        },
+        "queryStrategy": "UseIPv4",
+        "servers": [
+            "1.1.1.1",
+            {
+                "address": "1.1.1.1",
+                "domains": [
+                ],
+                "port": 53
+            },
+            {
+                "address": "8.8.8.8",
+                "domains": [
+                ],
+                "port": 53
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "socks"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "http"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 11111,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "tag": "metrics_in"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "metrics": {
+        "tag": "metrics_out"
+    },
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": -1,
+                "enabled": false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": ""
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "de-fra1.servconnect.cc",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision",
+                                "id": "58ddd502-13a7-007b-8daa-a133ada624ec",
+                                "level": 8,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "realitySettings": {
+                    "allowInsecure": false,
+                    "fingerprint": "qq",
+                    "publicKey": "8qn-WEdsXUksvnc4IK-b9Rs6zMIP-0AXrouplbozJzQ",
+                    "serverName": "de-fra1-info.servconnect.cc",
+                    "shortId": "8250e815c9beff49",
+                    "show": false,
+                    "spiderX": "/"
+                },
+                "security": "reality",
+                "tcpSettings": {
+                    "header": {
+                        "type": "none"
+                    }
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIP"
+            },
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "tag": "block"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true
+            },
+            "8": {
+                "connIdle": 300,
+                "downlinkOnly": 1,
+                "handshake": 4,
+                "uplinkOnly": 1
+            }
+        },
+        "system": {
+            "statsInboundDownlink": true,
+            "statsInboundUplink": true,
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "remarks": "🇩🇪 [DE] Германия",
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "inboundTag": [
+                    "metrics_in"
+                ],
+                "outboundTag": "metrics_out"
+            },
+            {
+                "ip": [
+                    "1.1.1.1"
+                ],
+                "outboundTag": "proxy",
+                "port": "53"
+            },
+            {
+                "ip": [
+                    "8.8.8.8"
+                ],
+                "outboundTag": "direct",
+                "port": "53"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
+
+Estoniy:
+{
+    "dns": {
+        "hosts": {
+            "domain:googleapis.cn": "googleapis.com"
+        },
+        "queryStrategy": "UseIPv4",
+        "servers": [
+            "1.1.1.1",
+            {
+                "address": "1.1.1.1",
+                "domains": [
+                ],
+                "port": 53
+            },
+            {
+                "address": "8.8.8.8",
+                "domains": [
+                ],
+                "port": 53
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "socks"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "http"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 11111,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "tag": "metrics_in"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "metrics": {
+        "tag": "metrics_out"
+    },
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": -1,
+                "enabled": false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": ""
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "ee-tll.servconnect.cc",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision",
+                                "id": "58ddd502-13a7-497f-8daa-a133ada624ec",
+                                "level": 8,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "realitySettings": {
+                    "allowInsecure": false,
+                    "fingerprint": "qq",
+                    "publicKey": "8qn-WEdsXUksvnc4IK-b9Rs6zMIP-0AXrouplbozJzQ",
+                    "serverName": "ee-tll-01.cdn.bridgecloud.cloud",
+                    "shortId": "312554e3d7c16702",
+                    "show": false,
+                    "spiderX": "/"
+                },
+                "security": "reality",
+                "tcpSettings": {
+                    "header": {
+                        "type": "none"
+                    }
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIP"
+            },
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "tag": "block"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true
+            },
+            "8": {
+                "connIdle": 300,
+                "downlinkOnly": 1,
+                "handshake": 4,
+                "uplinkOnly": 1
+            }
+        },
+        "system": {
+            "statsInboundDownlink": true,
+            "statsInboundUplink": true,
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "remarks": "🇪🇪 [EE] Эстония",
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "inboundTag": [
+                    "metrics_in"
+                ],
+                "outboundTag": "metrics_out"
+            },
+            {
+                "ip": [
+                    "1.1.1.1"
+                ],
+                "outboundTag": "proxy",
+                "port": "53"
+            },
+            {
+                "ip": [
+                    "8.8.8.8"
+                ],
+                "outboundTag": "direct",
+                "port": "53"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
+
+Finland:
+{
+    "dns": {
+        "hosts": {
+            "domain:googleapis.cn": "googleapis.com"
+        },
+        "queryStrategy": "UseIPv4",
+        "servers": [
+            "1.1.1.1",
+            {
+                "address": "1.1.1.1",
+                "domains": [
+                ],
+                "port": 53
+            },
+            {
+                "address": "8.8.8.8",
+                "domains": [
+                ],
+                "port": 53
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "socks"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "http"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 11111,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "tag": "metrics_in"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "metrics": {
+        "tag": "metrics_out"
+    },
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": -1,
+                "enabled": false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": ""
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "fi-tun.servconnect.cc",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision",
+                                "id": "58ddd502-13a7-497f-8daa-a133ada624ec",
+                                "level": 8,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "realitySettings": {
+                    "allowInsecure": false,
+                    "fingerprint": "qq",
+                    "publicKey": "8qn-WEdsXUksvnc4IK-b9Rs6zMIP-0AXrouplbozJzQ",
+                    "serverName": "outlook.office.com",
+                    "shortId": "3f1eef886f85d2fa",
+                    "show": false,
+                    "spiderX": "/"
+                },
+                "security": "reality",
+                "tcpSettings": {
+                    "header": {
+                        "type": "none"
+                    }
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIP"
+            },
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "tag": "block"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true
+            },
+            "8": {
+                "connIdle": 300,
+                "downlinkOnly": 1,
+                "handshake": 4,
+                "uplinkOnly": 1
+            }
+        },
+        "system": {
+            "statsInboundDownlink": true,
+            "statsInboundUplink": true,
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "remarks": "🇫🇮 [FI] Финляндия",
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "inboundTag": [
+                    "metrics_in"
+                ],
+                "outboundTag": "metrics_out"
+            },
+            {
+                "ip": [
+                    "1.1.1.1"
+                ],
+                "outboundTag": "proxy",
+                "port": "53"
+            },
+            {
+                "ip": [
+                    "8.8.8.8"
+                ],
+                "outboundTag": "direct",
+                "port": "53"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
+
+Sweden:
+{
+    "dns": {
+        "hosts": {
+            "domain:googleapis.cn": "googleapis.com"
+        },
+        "queryStrategy": "UseIPv4",
+        "servers": [
+            "1.1.1.1",
+            {
+                "address": "1.1.1.1",
+                "domains": [
+                ],
+                "port": 53
+            },
+            {
+                "address": "8.8.8.8",
+                "domains": [
+                ],
+                "port": 53
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "socks"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true
+            },
+            "tag": "http"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 11111,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "tag": "metrics_in"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "metrics": {
+        "tag": "metrics_out"
+    },
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": -1,
+                "enabled": false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": ""
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "se-arn.servconnect.cc",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision",
+                                "id": "58ddd502-13a7-497f-8daa-a133ada624ec",
+                                "level": 8,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "realitySettings": {
+                    "allowInsecure": false,
+                    "fingerprint": "qq",
+                    "publicKey": "8qn-WEdsXUksvnc4IK-b9Rs6zMIP-0AXrouplbozJzQ",
+                    "serverName": "se-arn1-info.servconnect.cc",
+                    "shortId": "d174055081dce7de",
+                    "show": false,
+                    "spiderX": "/"
+                },
+                "security": "reality",
+                "tcpSettings": {
+                    "header": {
+                        "type": "none"
+                    }
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIP"
+            },
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "tag": "block"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true
+            },
+            "8": {
+                "connIdle": 300,
+                "downlinkOnly": 1,
+                "handshake": 4,
+                "uplinkOnly": 1
+            }
+        },
+        "system": {
+            "statsInboundDownlink": true,
+            "statsInboundUplink": true,
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "remarks": "🇸🇪 [SE] Швеция",
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "inboundTag": [
+                    "metrics_in"
+                ],
+                "outboundTag": "metrics_out"
+            },
+            {
+                "ip": [
+                    "1.1.1.1"
+                ],
+                "outboundTag": "proxy",
+                "port": "53"
+            },
+            {
+                "ip": [
+                    "8.8.8.8"
+                ],
+                "outboundTag": "direct",
+                "port": "53"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
